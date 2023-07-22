@@ -2,6 +2,25 @@
   display: flex;
   flex-direction: column;
   width: 80vw;
+  margin: 1.5rem auto;
+}
+
+.foods-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+hr {
+  width: 97.5%;
+  height: 7.5px;
+  background-color: #000;
+  padding: 0;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0 !important;
+  top: 20px;
+  border: none;
+  border-radius: 45%;
 }
 
 .food-form-wrapper {
@@ -50,7 +69,6 @@
 .add-food-btn,
 .back-food-btn {
   width: fit-content;
-  margin: 10px;
   padding: 10px;
   background-color: whitesmoke;
   color: black;
@@ -78,7 +96,6 @@
 #foods .add-food-btn {
   align-self: flex-end;
   margin-right: 1.5rem;
-  margin-bottom: 2rem;
 }
 
 .list-foods .table td:first-child,
