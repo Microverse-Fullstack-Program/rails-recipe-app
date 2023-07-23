@@ -14,17 +14,28 @@ class InventoriesController < ApplicationController
 
   def create
     @inventory = current_user.inventories.build(inventory_params)
-    if @inventory.save
-      redirect_to @inventory, notice: 'Inventory was successfully created.'
-    else
-      render :new
+
+    respond_to do |format|
+      if @inventory.save
+        format.html { redirect_to @inventory, notice: 'Recipe created successfully!' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   def destroy
     @inventory.inventory_foods.destroy_all
-    @inventory.destroy
-    redirect_to inventories_url, notice: 'Inventory was successfully destroyed.'
+
+    if !@inventory.inventory_foods.any? && @inventory.destroy
+      flash[:notice] = 'Inventory was successfully destroyed.'
+    else
+      flash[:alert] = 'Inventory is linked to a food and cannot deleted!'
+    end
+      redirect_to inventories_url
   end
 
   def shopping_list

@@ -7,14 +7,16 @@ class RecipeFoodsController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @add_recipe_food = @recipe.recipe_foods.build(recipe_food_params)
+    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
 
-    if @add_recipe_food.save
-      flash[:notice] = 'Food linked to recipe successfully!'
-      redirect_to recipe_path(@recipe)
-    else
-      @foods = Food.all
-      render :new
+    respond_to do |format|
+      if @recipe_food.save
+        format.html { redirect_to recipe_path(@recipe), notice: 'Food linked to recipe successfully!' }
+        format.json { render :index, status: :created, location: @recipe_food }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
+      end
     end
   end
 

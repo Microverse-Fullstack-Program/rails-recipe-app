@@ -44,11 +44,6 @@ body {
   text-decoration: none;
 }
 
-.nav-item {
-  color: #000;
-  font-size: 23px;
-}
-
 .navbar-brand:hover,
 .nav-link:hover {
   color: #000;
@@ -60,15 +55,15 @@ body {
 }
 
 .table {
-  width: 80%;
-  margin-top: 20px;
-  min-width: 80%;
+  width: 90% !important;
+  margin: 20px auto;
+  min-width: 50%;
   border: 3px dashed black;
   border-radius: 5px;
   border-spacing: 0;
   box-shadow: 8px 9px 11px rgba(120, 121, 121, 0.3);
   margin-bottom: 32px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: black;
   color: white;
 }
@@ -111,38 +106,8 @@ body {
   width: 100px;
 }
 
-.logout-button {
-  background-color: #000;
-  color: rgb(0, 0, 0);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.logout-button:hover {
-  background-color: #000;
-}
-
 .navbar-nav .nav-link {
-  padding: 8px 15px;
   margin-right: 5px;
-}
-
-.navbar-nav .nav-link.logout-button {
-  background-color: #f44336;
-  color: white;
-  border-radius: 4px;
-}
-
-.navbar-nav .nav-link.logout-button:hover {
-  background-color: #d32f2f;
 }
 
 .navbar-nav .nav-link.sign-up-button {
@@ -199,4 +164,103 @@ body {
 
 .recipe_price {
   font-size: large;
+}
+
+.field input[type="email"],
+.field input[type="password"],
+.field input[type="text"] {
+  width: 100%;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+.actions input[type="submit"] {
+  padding: 5px 15px !important;
+  font-size: 16px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card-footer a {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.collapse {
+  margin-right: 2%;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 95%;
+}
+
+.nav-item {
+  color: #000;
+  font-size: 20px;
+  margin-top: 0% !important;
+}
+
+.nav-item .nav-link {
+  color: #fff;
+  font-weight: bold;
+  padding: 0 !important;
+}
+
+.nav-item .nav-link:hover {
+  color: #4e08f3;
+  background-color: #f7f4f4;
+  border: 1px solid #b5b3b9;
+  padding: 2.5px 5px !important;
+}
+
+.nav-item > form {
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px black;
+  padding: 2.5px 5px !important;
+}
+
+.nav-item > form .nav-link:hover,
+.nav-item > form:hover {
+  background-color: #f7f4f4;
+  padding: 2.5px 5px !important;
+  border: none;
+}
+
+.add-btn button {
+  border: none;
+  background-color: whitesmoke;
+}
+
+.add-btn button:hover {
+  background-color: #c8f4f4;
+  font-size: large;
+  font-weight: bold;
+}
+
+.d-flex,
+.d-block,
+.steps {
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+}
+
+.d-flex a {
+  padding: 10px 15px;
+}
+
+@media (min-width: 992px) {
+  .nav-item {
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+  }
 }

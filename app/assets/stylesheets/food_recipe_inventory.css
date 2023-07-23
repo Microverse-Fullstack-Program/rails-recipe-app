@@ -1,11 +1,13 @@
-#foods {
+#foods,
+#recipes,
+#inventories {
   display: flex;
   flex-direction: column;
   width: 80vw;
   margin: 1.5rem auto;
 }
 
-.foods-list-heading {
+.list-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,7 +25,7 @@ hr {
   border-radius: 45%;
 }
 
-.food-form-wrapper {
+.form-wrapper {
   display: flex;
   flex-direction: column;
   width: 42vw;
@@ -32,7 +34,7 @@ hr {
   margin: auto;
 }
 
-.food-form-wrapper form {
+.form-wrapper form {
   width: 35vw;
   display: flex;
   flex-direction: column;
@@ -57,17 +59,19 @@ hr {
   align-self: center;
 }
 
-.add-food-btn {
-  border-radius: 5px;
-}
-
-.back-food-btn {
+.back-btn {
   border-radius: 35%;
   align-self: flex-end;
 }
 
-.add-food-btn,
-.back-food-btn {
+.add-btn {
+  border-radius: 5px;
+  align-self: flex-end;
+  margin-right: 2rem;
+}
+
+.add-btn,
+.back-btn {
   width: fit-content;
   padding: 10px;
   background-color: whitesmoke;
@@ -78,14 +82,14 @@ hr {
   cursor: pointer;
 }
 
-.add-food-btn a,
-.back-food-btn a {
+.add-btn a,
+.back-btn a {
   text-decoration: none;
   color: black;
 }
 
-.add-food-btn:hover,
-.back-food-btn:hover {
+.add-btn:hover,
+.back-btn:hover {
   background-color: #c8f4f4;
   border: 1px solid #0f87e3;
   box-shadow: 1px 1px 1px 1px #0f87e3;
@@ -93,18 +97,34 @@ hr {
   font-weight: bold;
 }
 
-#foods .add-food-btn {
-  align-self: flex-end;
-  margin-right: 1.5rem;
+.remove-btn {
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.5rem;
+  background-color: whitesmoke;
+  color: black;
+  font-size: 17px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px 1px black;
+  cursor: pointer;
 }
 
-.list-foods .table td:first-child,
-.list-foods .table th:first-child {
+.table td:first-child,
+.table th:first-child {
   width: auto;
 }
 
 .list-foods .table {
   font-size: 1.5rem;
+}
+
+.inventory-food {
+  display: flex;
+  flex-direction: column;
+}
+
+.inventory-food .add-btn {
+  align-self: end;
 }
 
 /* Path: app\assets\stylesheets\food.css */

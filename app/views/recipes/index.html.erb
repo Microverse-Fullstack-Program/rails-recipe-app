@@ -1,7 +1,43 @@
-<section class="my-3 p-3">
-  <% @recipes.each do |recipe| %>
-      <%= render 'recipe', recipe: recipe %>
-  <% end %>
+<div id="recipes">
+  <div class="list-heading">
+    <h1>Rcipes List</h1>
+    <div class="add-btn">
+      <%= link_to "Add Recipe", new_recipe_path, data: { turbo_frame: "add_recipe_modal"} %>
+    </div>
+  </div>
 
-  <%= link_to 'New Recipe', new_recipe_path, class: 'btn btn-outline-dark btn-sm' %>
-</section>
+  <hr>
+
+  <div class="list-recipes">
+    <% if @recipes.empty?%>
+      <h2 style="color: blue; margin-top: 45px;">
+        There are no recipes in the database for this user.
+      </h2>
+    <% else %>
+      <p style="color: green">
+        <% if notice == "Recipe created successfully!" %>
+            <span style="color: green"> <%= notice %> </span>
+        <% elsif alert.present? %>
+            <span style="color: red"> <%= alert %> </span>
+        <% end %>
+      </p>
+      <section class="my-3 p-3">
+        <% @recipes.each do |recipe| %>
+          <div class="row border border-2 rounded rounded-2 mb-3 p-3">
+            <div class="col d-flex flex-column justify-content-between">
+              <%= link_to recipe.name, recipe, class: 'nav-link fs-4 fw-bold' %>
+              <% if recipe.user == current_user %>
+              <%= button_to 'REMOVE', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' }, class: 'remove-btn fs-6 text-decoration-none' %>
+            <% end %>
+          
+            </div>
+            <div class="col-10">
+              <span class="fs-5"><%= recipe.description %></span>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>
+

@@ -1,24 +1,11 @@
-<br>
-<h2 class="text-center">Add New Inventory</h2>
-<br>
-<%= form_with model: @inventory do |f| %>
+<div class="form-wrapper">
+  <h1>Add New Inventory</h1>
 
-	<br>
-	<div>
-		<%= f.label :name %>
-		<%= f.text_field :name, autofocus: true, autocomplete: 'name', placeholder: 'name', class: 'form-control' %>
-	</div>
-	<br>
-	<div>
-		<%= f.label :Description %>
-		<%= f.text_area :description, autofocus: true, autocomplete: 'description', placeholder: 'description', class: 'form-control' %>
-	</div>
-	<br>
-	<div>
-		<%= f.number_field :user_id, value: current_user.id, type: :hidden %>
-	</div>
-	<br>
-	<div>
-		<%= f.submit class: 'btn btn-outline-dark btn-sm' %>
-	</div>
-<% end %>
+    <%= render "form", inventory: @inventory %>
+
+  <div class="back-btn">
+    <%= link_to "Back to inventories", inventories_path %>
+  </div>
+</div
+
+

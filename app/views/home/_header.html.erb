@@ -10,38 +10,35 @@
           <li class="nav-item">
             <%= link_to "Public Recipes", public_recipes_path, class: "nav-link" %>
           </li>
-          <% if current_page?(recipes_path) %>
-            <li class="nav-item">
-              <%= link_to "Create new Recipe", new_recipe_path, class: "nav-link" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Recipes", recipes_path, class: "nav-link" %>
-            </li>
-          <% end %>
-          <% if current_page?(inventories_path)  %>
-            <li class="nav-item">
-              <%= link_to "Create New Inventory", new_inventory_path, class: "nav-link" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Inventories", inventories_path, class: "nav-link" %>
-            </li>
-          <% end %>
+          <li class="nav-item">
+            <%= link_to "Recipes", recipes_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Inventories", inventories_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to 'Foods', foods_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "logout-button nav-link", form_class: "nav-link" %>
-
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
-          </li>
+          <% if current_page?(user_session_path) %>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            </li>
+          <% elsif current_page?(new_user_registration_path) %>
+            <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>

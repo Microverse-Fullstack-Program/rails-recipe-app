@@ -1,14 +1,17 @@
-<section class="add-inventory">
-<h1>Add Food to <%= @inventory.name %></h1>
-<div class="inventory">
-<%= form_with(model: [ @inventory, @inventory_food ], local: true) do |form| %>
-  <%= form.label :food_id, 'Food' %>
-  <%= form.collection_select :food_id, @foods, :id, :name, prompt: 'Select a food' %>
+<div class="form-wrapper">
+  <h3>Add Food to <%= @inventory.name %></h3>
 
-  <%= form.label :quantity %>
-  <%= form.number_field :quantity %>
+  <%= form_with(model: [ @inventory, @inventory_food ], local: true) do |f| %>
+    <div lass="form-group">
+      <%= f.label :food_id, "Food" %>
+      <%= f.collection_select :food_id, @foods, :id, :name, prompt: "Select a food", class: 'form-control' %>
+    </div>
 
-  <%= form.submit "Add Food" %>
-  </div>
-<% end %>
-<section>
+    <div lass="form-group">
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity, autofocus: true, autocomplete: "quantity", class: 'form-control' %>
+    </div>
+
+      <%= f.submit class: "btn btn-primary", class: "btn btn-secondary" %>
+  <% end %>
+<div>

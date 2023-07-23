@@ -1,0 +1,48 @@
+<%= form_with(model: recipe) do |f| %>
+  <% if recipe.errors.any? %>
+    <div style="color: red">
+      <h2 style="font-size: 15px">
+        <%= pluralize(recipe.errors.count, "error") %> 
+        prohibited this recipe from being saved:
+      </h2>
+
+      <ul>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, %w[Public Private], selected: 'Public', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: 'name', placeholder: 'Recipe name', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cooking_time, "Cooking Time (in minutes)" %>
+    <%= f.number_field :cooking_time, autofocus: true, autocomplete: 'cooking_time', placeholder: 'Cooking time', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :preparation_time, "Preparation Time (in minutes)" %>
+    <%= f.number_field :preparation_time, autofocus: true, autocomplete: 'preparation_time', placeholder: 'Preparation time', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, autofocus: true, autocomplete: 'description', placeholder: 'description', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.number_field :user_id, value: current_user.id, type: :hidden %>
+  </div>
+
+  <%= f.submit class: "btn btn-primary", class: "btn btn-secondary" %>
+
+<% end %>

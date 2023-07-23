@@ -49,10 +49,10 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    if @recipe.destroy
+    if !@recipe.recipe_foods.any? && @recipe.destroy
       flash[:notice] = 'Recipe deleted successfully!'
     else
-      flash[:alert] = 'Recipe not deleted!'
+      flash[:alert] = 'Recipe is linked to a food and cannot deleted!'
     end
     redirect_to recipes_path
   end
