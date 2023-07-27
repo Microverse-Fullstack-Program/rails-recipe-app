@@ -1,7 +1,22 @@
 <div class="form-wrapper">
   <h3>Add Food to <%= @inventory.name %></h3>
 
-  <%= form_with(model: [ @inventory, @inventory_food ], local: true) do |f| %>
+  <%= form_with(model: [@inventory, @inventory_food], local: true) do |f| %>
+    <% if @inventory_food.errors.any? %>
+      <div style="color: red">
+        <h3 style="font-size: 15px">
+          <%= pluralize(@inventory_food.errors.count, "error") %>
+          prohibited this inventory from being added to food:
+        </h3>
+
+        <ul>
+          <% @inventory_food.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
     <div lass="form-group">
       <%= f.label :food_id, "Food" %>
       <%= f.collection_select :food_id, @foods, :id, :name, prompt: "Select a food", class: 'form-control' %>

@@ -3,23 +3,38 @@
  <section>
    <div class="d-flex justify-content-between align-items-center">
      <div>
-       <p>Amount of food to buy: <span><%=%></span> </p>
-       <p>Total value of food needed:<span><%%></span> </p>
+       <p>Amount of food to buy: <span><%= %></span> </p>
+       <p>Total value of food needed:<span><%= %></span> </p>
      </div>
      <div>
-       <p>Recipe: <%= link_to @recipe.name, recipe_path(@recipe) %></p>
-       <p>Inventory:</p>
+       <p> Recipe: <%= link_to @recipe.name, recipe_path(@recipe) %></p>
+       <p>Inventory: <%= link_to @inventories, inventories_path(@inventory) %></p>
      </div>
    </div>
-   <table class="table table-striped table-bordered">
-     <thead>
-       <tr>
-         <th scope="col">Food</th>
-         <th scope="col">Quantity</th>
-         <th scope="col">Price</th>
-       </tr>
-     </thead>
-     <tbody>
-     </tbody>
-   </table>
+
+    <hr>
+    <% if @recipe.empty? %>
+      <h3 style="color: blue; margin-top: 35px;">
+        No shopping list generated yet.
+      </h3>
+    <% else %>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Food</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td><%= 1 %></td>
+              <td><%= %></td>
+              <td><%= %></td>
+              <td><%= %></td>
+            </tr>
+        </tbody>
+      </table>
+  <% end %>
  </section> 

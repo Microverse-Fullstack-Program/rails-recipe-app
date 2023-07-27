@@ -29,7 +29,7 @@
             <th>Food</th>
             <th>Measurement Unit</th>
             <th>Price</th>
-            <th>Action</th>
+            <th class="food-action">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -39,8 +39,9 @@
               <td><%= food.name %></td>
               <td><%= food.measurement_unit %></td>
               <td><%= food.price %></td>
-              <td>
-                <%= link_to "Delete", food, class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+              <td class="food-action">
+                <span> <%= link_to "Modify", edit_food_path(food), class: "btn btn-danger"%> </span>
+                <span> <%= link_to "Delete", food, class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %></span>
               </td>
             </tr>
           <% end %>

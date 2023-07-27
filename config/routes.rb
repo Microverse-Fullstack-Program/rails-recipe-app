@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :foods do
-    resources :recipe_foods, only: [:new, :create, :destroy]
+    resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
 
   get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'

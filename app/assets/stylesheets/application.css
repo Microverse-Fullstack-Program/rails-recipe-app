@@ -258,6 +258,12 @@ body {
   padding: 10px 15px;
 }
 
+.food-action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @media (min-width: 992px) {
   .nav-item {
     margin-top: 1.5rem;

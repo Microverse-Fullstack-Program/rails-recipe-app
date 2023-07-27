@@ -1,4 +1,8 @@
 class RecipeFoodsController < ApplicationController
+  def index
+    @recipe_foods = RecipeFood.all
+  end
+
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new(recipe_id: params[:recipe_id])
@@ -14,6 +18,7 @@ class RecipeFoodsController < ApplicationController
         format.html { redirect_to recipe_path(@recipe), notice: 'Food linked to recipe successfully!' }
         format.json { render :index, status: :created, location: @recipe_food }
       else
+        @foods = Food.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
       end
